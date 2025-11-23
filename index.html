@@ -124,6 +124,7 @@
             position: relative;
             z-index: 2;
             display: none;
+            padding-bottom: 100px;
         }
         
         .container.active {
@@ -176,129 +177,79 @@
             animation: fadeInUp 0.8s ease-out 0.9s forwards;
         }
         
-        #doc-content h1 {
-            font-size: 2.5rem;
-            margin: 40px 0 20px;
+        /* Typography overrides for Google Doc Content */
+        #doc-content h1, #doc-content .title {
+            font-size: 2.2rem;
+            margin: 50px 0 25px;
             color: var(--text-primary);
-            background: none;
-            -webkit-text-fill-color: unset;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
         }
         
-        #doc-content h2 {
-            font-size: 2rem;
-            margin: 35px 0 20px;
-            padding-left: 20px;
-            position: relative;
-        }
-        
-        #doc-content h2::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 100%;
-            background: var(--gradient-2);
-            border-radius: 2px;
-        }
-        
-        #doc-content h3 {
+        #doc-content h2, #doc-content h3 {
             font-family: 'Space Mono', monospace;
-            font-size: 1.2rem;
-            margin: 30px 0 15px;
+            font-size: 1.4rem;
+            margin: 40px 0 20px;
             color: var(--accent-cyan);
+            letter-spacing: -0.5px;
+        }
+        
+        #doc-content h4, #doc-content h5, #doc-content h6 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 30px 0 15px;
+            color: var(--text-primary);
         }
         
         #doc-content p {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             line-height: 1.8;
+            color: var(--text-primary);
         }
         
         #doc-content ul, #doc-content ol {
-            padding-left: 30px;
-            margin-bottom: 20px;
+            padding-left: 25px;
+            margin-bottom: 25px;
         }
         
         #doc-content li {
-            margin-bottom: 12px;
-            position: relative;
+            margin-bottom: 10px;
+            padding-left: 5px;
         }
         
-        #doc-content ul li::marker {
-            color: var(--accent-cyan);
-        }
-        
+        /* Tables */
         #doc-content table {
-            width: 100%;
+            width: 100% !important;
             border-collapse: separate;
             border-spacing: 0;
-            margin: 25px 0;
+            margin: 30px 0;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
         }
         
-        #doc-content th, #doc-content td {
+        #doc-content td, #doc-content th {
             padding: 15px;
-            text-align: left;
             border-bottom: 1px solid var(--border-color);
-        }
-        
-        #doc-content th {
-            background: rgba(0, 212, 255, 0.05);
-            font-family: 'Space Mono', monospace;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            vertical-align: top;
         }
         
         #doc-content tr:last-child td {
             border-bottom: none;
         }
         
-        #doc-content tr:hover {
-            background: rgba(0, 212, 255, 0.02);
-            transition: background 0.3s ease;
-        }
-        
+        /* Links */
         #doc-content a {
             color: var(--accent-cyan);
             text-decoration: none;
+            border-bottom: 1px dashed var(--accent-cyan);
             transition: all 0.3s ease;
         }
         
         #doc-content a:hover {
             color: var(--accent-red);
-            text-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
-        }
-        
-        #doc-content strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-        
-        #doc-content em {
-            font-style: italic;
-            color: var(--text-secondary);
-        }
-        
-        /* Style blockquotes as reading items */
-        #doc-content blockquote {
-            background: var(--bg-secondary);
-            border-left: 3px solid var(--accent-cyan);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-            transition: all 0.3s ease;
-        }
-        
-        #doc-content blockquote:hover {
-            transform: translateX(5px);
-            border-left-color: var(--accent-red);
-            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.1);
+            border-bottom-color: var(--accent-red);
         }
         
         /* Animations */
@@ -345,145 +296,36 @@
         /* Footer */
         footer {
             text-align: center;
-            padding: 60px 0 40px;
-            margin-top: 100px;
+            padding: 60px 0 20px;
+            margin-top: 60px;
             border-top: 1px solid var(--border-color);
             color: var(--text-secondary);
             font-family: 'Space Mono', monospace;
             font-size: 0.9rem;
         }
-        
-        /* Settings button */
-        .settings-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-family: 'Space Mono', monospace;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .settings-btn:hover {
-            background: rgba(0, 212, 255, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        /* Settings panel */
-        .settings-panel {
-            position: fixed;
-            bottom: 70px;
-            right: 20px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            width: 350px;
-            display: none;
-            z-index: 1000;
-        }
-        
-        .settings-panel.active {
-            display: block;
-        }
-        
-        .settings-panel h3 {
-            font-family: 'Space Mono', monospace;
-            color: var(--accent-cyan);
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        
-        .settings-panel input {
-            width: 100%;
-            background: var(--bg-dark);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 10px;
-            border-radius: 6px;
-            font-family: 'Space Mono', monospace;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-        
-        .settings-panel button {
-            background: var(--gradient-2);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-family: 'Space Mono', monospace;
-            font-size: 12px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .settings-panel button:hover {
-            transform: translateY(-2px);
-        }
-        
-        .settings-panel .info {
-            color: var(--text-secondary);
-            font-size: 11px;
-            margin-top: 10px;
-            line-height: 1.4;
-        }
-        
+
         /* Responsive */
         @media (max-width: 768px) {
-            body {
-                font-size: 16px;
-            }
-            
-            header {
-                padding: 50px 0 40px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.1rem;
-            }
-            
-            #doc-content table {
-                font-size: 0.9rem;
-            }
-            
-            #doc-content th, #doc-content td {
-                padding: 10px;
-            }
-            
-            .settings-panel {
-                width: calc(100vw - 40px);
-                right: 20px;
-                left: 20px;
-            }
+            body { font-size: 16px; }
+            header { padding: 50px 0 40px; }
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1.1rem; }
+            #doc-content table { display: block; overflow-x: auto; }
         }
     </style>
 </head>
 <body>
-    <!-- Loading State -->
     <div class="loading" id="loading">
         <div class="loading-spinner"></div>
-        <div class="loading-text">LOADING COURSE CONTENT...</div>
+        <div class="loading-text">DECODING SYLLABUS...</div>
     </div>
     
-    <!-- Error State -->
     <div class="error" id="error">
-        <h2>Unable to Load Content</h2>
-        <p>Could not fetch the course content. Please check the Google Doc ID and try again.</p>
-        <button onclick="location.reload()">Retry</button>
+        <h2>Connection Interrupted</h2>
+        <p>Unable to retrieve course data from the secure feed.</p>
+        <button onclick="location.reload()">RETRY CONNECTION</button>
     </div>
     
-    <!-- Main Content -->
     <div class="container" id="container">
         <header>
             <div class="course-code">CCAI9023</div>
@@ -492,152 +334,88 @@
         </header>
         
         <div id="doc-content">
-            <!-- Content will be loaded here from Google Doc -->
-        </div>
+            </div>
         
         <footer>
-            <p>CCAI9023 · University of Hong Kong · Department of Sociology</p>
+            <p>Department of Sociology · University of Hong Kong</p>
         </footer>
-    </div>
-    
-    <!-- Settings Button -->
-    <button class="settings-btn" onclick="toggleSettings()">⚙ Settings</button>
-    
-    <!-- Settings Panel -->
-    <div class="settings-panel" id="settings">
-        <h3>GOOGLE DOC SETTINGS</h3>
-        <input type="text" id="docId" placeholder="Enter Google Doc ID">
-        <button onclick="updateDocId()">Update Document</button>
-        <p class="info">
-            To get the Doc ID:<br>
-            1. Open your Google Doc<br>
-            2. Look at the URL: docs.google.com/document/d/<strong>[DOC-ID]</strong>/edit<br>
-            3. Copy the ID (the part between /d/ and /edit)<br>
-            4. Make sure the doc is set to "Anyone with link can view"
-        </p>
     </div>
 
     <script>
-        // Default Google Doc ID - REPLACE THIS with your actual Google Doc ID
-        let GOOGLE_DOC_ID = '1xGvnjaXk77SXyVpR5fhIZsby6Ah0WcrSt3ue2ySRtRo';
+        // THE GOOGLE DOC "PUBLISHED TO WEB" URL
+        const PUB_URL = 'https://docs.google.com/document/d/e/2PACX-1vSbKiFxQlyXUehPpU4LLSDJ4w-uUfV3UKAKfZ_uC4Hskf2Odbe27d6jhHsP7qxCVc417IvitmtWDbTc/pub';
         
-        // Check if there's a saved Doc ID in localStorage
-        const savedDocId = localStorage.getItem('courseDocId');
-        if (savedDocId) {
-            GOOGLE_DOC_ID = savedDocId;
-        }
-        
-        // Function to fetch and display Google Doc content
-        async function loadGoogleDoc() {
+        async function loadContent() {
             const container = document.getElementById('container');
             const loading = document.getElementById('loading');
             const error = document.getElementById('error');
             const docContent = document.getElementById('doc-content');
             
             try {
-                // Construct the Google Docs export URL
-                const url = `https://docs.google.com/document/d/${GOOGLE_DOC_ID}/export?format=html`;
+                // Use CORS proxy to fetch the HTML
+                const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(PUB_URL);
+                const response = await fetch(proxyUrl);
                 
-                // Fetch the content
-                const response = await fetch(url);
-                
-                if (!response.ok) {
-                    throw new Error('Failed to fetch document');
-                }
+                if (!response.ok) throw new Error('Network response was not ok');
                 
                 const html = await response.text();
                 
-                // Create a temporary container to parse the HTML
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = html;
+                // Parse the HTML
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
                 
-                // Extract the body content from the Google Doc HTML
-                const bodyContent = tempDiv.querySelector('body');
+                // The published doc content is usually inside a div called 'contents' 
+                // or just in the body.
+                const contentNode = doc.getElementById('contents') || doc.body;
                 
-                if (bodyContent) {
-                    // Clean up the content
-                    const cleanContent = cleanGoogleDocContent(bodyContent.innerHTML);
+                if (contentNode) {
+                    // Clean the HTML
+                    const cleanedHtml = cleanHTML(contentNode.innerHTML);
+                    docContent.innerHTML = cleanedHtml;
                     
-                    // Insert the content
-                    docContent.innerHTML = cleanContent;
-                    
-                    // Hide loading, show content
+                    // Success UI update
                     loading.style.display = 'none';
                     container.classList.add('active');
                 } else {
-                    throw new Error('No content found');
+                    throw new Error('No content found in document');
                 }
                 
             } catch (err) {
-                console.error('Error loading Google Doc:', err);
+                console.error('Fetch error:', err);
                 loading.style.display = 'none';
                 error.style.display = 'flex';
             }
         }
         
-        // Function to clean up Google Doc HTML
-        function cleanGoogleDocContent(html) {
-            // Remove Google's inline styles but keep the structure
-            let cleaned = html.replace(/style="[^"]*"/g, '');
+        function cleanHTML(html) {
+            let clean = html;
             
-            // Remove Google's class attributes
-            cleaned = cleaned.replace(/class="[^"]*"/g, '');
+            // Remove all style tags and attributes to let our CSS take over
+            clean = clean.replace(/<style\b[^>]*>([\s\S]*?)<\/style>/g, "");
+            clean = clean.replace(/\sstyle="[^"]*"/g, "");
             
-            // Remove spans that Google adds
-            cleaned = cleaned.replace(/<span[^>]*>/g, '');
-            cleaned = cleaned.replace(/<\/span>/g, '');
+            // Remove class attributes (Google docs puts classes on everything)
+            clean = clean.replace(/\sclass="[^"]*"/g, "");
             
-            // Clean up empty paragraphs
-            cleaned = cleaned.replace(/<p[^>]*><\/p>/g, '');
+            // Remove span tags but keep their content
+            clean = clean.replace(/<span[^>]*>/g, "");
+            clean = clean.replace(/<\/span>/g, "");
             
-            // Remove Google's wrapper divs
-            cleaned = cleaned.replace(/<div[^>]*>/g, '');
-            cleaned = cleaned.replace(/<\/div>/g, '');
+            // Remove empty paragraphs
+            clean = clean.replace(/<p>\s*<\/p>/g, "");
+            clean = clean.replace(/<p>&nbsp;<\/p>/g, "");
             
-            // Fix line breaks
-            cleaned = cleaned.replace(/<br>/g, '<br />');
+            // Simplify redirects in links (Google wraps links in a redirect)
+            // This regex attempts to fix "google.com/url?q=..." links
+            clean = clean.replace(/href="https:\/\/www\.google\.com\/url\?q=([^&]+)&amp;[^"]*"/g, (match, url) => {
+                return 'href="' + decodeURIComponent(url) + '" target="_blank"';
+            });
             
-            return cleaned;
+            return clean;
         }
         
-        // Settings functions
-        function toggleSettings() {
-            const settings = document.getElementById('settings');
-            settings.classList.toggle('active');
-            
-            // Show current Doc ID in input
-            const input = document.getElementById('docId');
-            input.value = GOOGLE_DOC_ID;
-        }
-        
-        function updateDocId() {
-            const input = document.getElementById('docId');
-            const newId = input.value.trim();
-            
-            if (newId) {
-                // Extract ID if user pasted full URL
-                let docId = newId;
-                if (newId.includes('docs.google.com')) {
-                    const match = newId.match(/\/d\/([a-zA-Z0-9-_]+)/);
-                    if (match) {
-                        docId = match[1];
-                    }
-                }
-                
-                // Save to localStorage
-                localStorage.setItem('courseDocId', docId);
-                GOOGLE_DOC_ID = docId;
-                
-                // Reload the page
-                location.reload();
-            }
-        }
-        
-        // Load content when page loads
-        window.addEventListener('DOMContentLoaded', loadGoogleDoc);
-        
-        // Refresh content every 5 minutes (optional)
-        setInterval(loadGoogleDoc, 5 * 60 * 1000);
+        // Initialize
+        window.addEventListener('DOMContentLoaded', loadContent);
     </script>
 </body>
 </html>
