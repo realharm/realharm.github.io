@@ -3,372 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCAI9023 - Real Harm in an Unreal World</title>
+    <title>Redirecting to Syllabus...</title>
+    <meta name="robots" content="noindex">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="refresh" content="0; url=YOUR_GOOGLE_DOC_LINK_HERE">
+    
+    <script type="text/javascript">
+        window.location.replace("YOUR_GOOGLE_DOC_LINK_HERE");
+    </script>
     
     <style>
-        :root {
-            /* Professional Dark Palette */
-            --bg-body: #0f1115;
-            --bg-card: #161b22;
-            --bg-secondary: #21262d;
-            
-            --text-primary: #f0f6fc;
-            --text-secondary: #8b949e;
-            --text-tertiary: #6e7681;
-            
-            --accent-primary: #58a6ff; /* Professional Blue */
-            --accent-hover: #79c0ff;
-            
-            --border-subtle: #30363d;
-            --border-active: #8b949e;
-            
-            --spacing-unit: 8px;
-            --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: var(--font-inter);
-            background-color: var(--bg-body);
-            color: var(--text-primary);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-size: 16px;
-        }
-        
-        /* Layout */
-        .container {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 60px 24px 100px;
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             display: flex;
-            flex-direction: column;
-        }
-
-        /* Header */
-        header {
-            margin-bottom: 60px;
-            border-bottom: 1px solid var(--border-subtle);
-            padding-bottom: 40px;
-        }
-
-        .course-badge {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            background-color: rgba(56, 139, 253, 0.15);
-            color: var(--accent-primary);
-            padding: 4px 12px;
-            border-radius: 100px;
-            margin-bottom: 16px;
-            border: 1px solid rgba(56, 139, 253, 0.4);
-        }
-
-        h1 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-            line-height: 1.2;
-        }
-
-        .subtitle {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        /* Loading State */
-        .loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 100px 0;
-            color: var(--text-secondary);
-        }
-
-        .loading-spinner {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--border-subtle);
-            border-top-color: var(--accent-primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin-bottom: 16px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Content Area */
-        #doc-content {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        #doc-content.visible {
-            opacity: 1;
-        }
-
-        /* Typography for Generated Content */
-        #doc-content h1, 
-        #doc-content .title {
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin: 48px 0 24px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border-subtle);
-            color: var(--text-primary);
-        }
-
-        #doc-content h2 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin: 40px 0 16px;
-            color: var(--text-primary);
-        }
-
-        #doc-content h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 32px 0 16px;
-            color: var(--text-primary);
-        }
-
-        #doc-content h4, #doc-content h5, #doc-content h6 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 24px 0 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-secondary);
-        }
-
-        #doc-content p {
-            margin-bottom: 1.5rem;
-            color: #c9d1d9; /* Slightly softer white for reading */
-            font-weight: 400;
-            line-height: 1.7;
-        }
-
-        #doc-content ul, #doc-content ol {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-            color: #c9d1d9;
-        }
-
-        #doc-content li {
-            margin-bottom: 0.5rem;
-            padding-left: 0.5rem;
-        }
-
-        /* Links */
-        #doc-content a {
-            color: var(--accent-primary);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        #doc-content a:hover {
-            color: var(--accent-hover);
-            text-decoration: underline;
-        }
-
-        /* Tables */
-        #doc-content table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 32px 0;
-            font-size: 0.95rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 6px;
-            overflow: hidden;
-            display: block; /* Ensures responsive scroll */
-            overflow-x: auto;
-        }
-
-        #doc-content th, #doc-content td {
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border-subtle);
-            text-align: left;
-        }
-
-        #doc-content th {
-            background-color: var(--bg-secondary);
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        #doc-content tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* Images within doc */
-        #doc-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
-            margin: 24px 0;
-            border: 1px solid var(--border-subtle);
-        }
-
-        /* Footer */
-        footer {
-            margin-top: auto;
-            padding-top: 40px;
-            border-top: 1px solid var(--border-subtle);
-            color: var(--text-tertiary);
-            font-size: 0.875rem;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f6f8fa;
+            color: #24292f;
         }
-        
-        footer a {
-            color: var(--accent-primary);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        footer a:hover {
-            color: var(--accent-hover);
-            text-decoration: underline;
-        }
-        
-        .department {
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        /* Error State */
-        .error {
-            display: none;
+        .container {
             text-align: center;
-            padding: 40px;
-            background: rgba(255, 100, 100, 0.1);
-            border: 1px solid rgba(255, 100, 100, 0.2);
-            border-radius: 8px;
-            color: #ff7b72;
         }
-
-        @media (max-width: 768px) {
-            .container { padding-top: 40px; }
-            h1 { font-size: 2rem; }
-            footer { flex-direction: column; gap: 12px; text-align: center; }
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <header>
-            <span class="course-badge">CCAI9023</span>
-            <h1>Real Harm in an Unreal World: Crime, Regulation and AI</h1>
-            <div class="subtitle">HKU Common Core Curriculum</div>
-        </header>
-        
-        <div id="loading" class="loading">
-            <div class="loading-spinner"></div>
-            <span>Retrieving syllabus...</span>
-        </div>
-
-        <div id="error" class="error">
-            <p>Unable to load course content.</p>
-            <button onclick="location.reload()" style="background:none; border:none; color:inherit; text-decoration:underline; cursor:pointer; margin-top:10px;">Retry</button>
-        </div>
-
-        <div id="doc-content">
-        </div>
-
-        <footer>
-            <p>Alternative syllabus link: <a href="https://docs.google.com/document/d/1xGvnjaXk77SXyVpR5fhIZsby6Ah0WcrSt3ue2ySRtRo/edit?usp=sharing" target="_blank" rel="noopener noreferrer">View on Google Docs</a></p>
-        </footer>
+        <p>Redirecting to the course syllabus...</p>
+        <p><a href="YOUR_GOOGLE_DOC_LINK_HERE">Click here if you are not redirected automatically.</a></p>
     </div>
-
-    <script>
-        // Your custom Apps Script URL - Updated with your latest correct link
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmVF3MGr_MBeWV6rrBgUjlhj_kbmCy9UIm1HaxSx54GqR5YXXd__9mWXP_VGBUjXIs/exec';
-
-        async function loadContent() {
-            const loading = document.getElementById('loading');
-            const error = document.getElementById('error');
-            const docContent = document.getElementById('doc-content');
-            
-            try {
-                // Fetch directly from the Apps Script
-                const response = await fetch(APPS_SCRIPT_URL);
-                
-                if (!response.ok) throw new Error('Network response was not ok');
-                
-                const html = await response.text();
-                
-                // Check if the script returned an error message
-                if (html.startsWith("Error")) throw new Error(html);
-
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                
-                // Google Docs usually puts content in #contents or body
-                const contentNode = doc.getElementById('contents') || doc.body;
-                
-                if (contentNode) {
-                    const cleanedHtml = cleanHTML(contentNode.innerHTML);
-                    docContent.innerHTML = cleanedHtml;
-                    
-                    loading.style.display = 'none';
-                    docContent.classList.add('visible');
-                } else {
-                    throw new Error('No content found');
-                }
-                
-            } catch (err) {
-                console.error(err);
-                loading.style.display = 'none';
-                error.style.display = 'block';
-                // Optional: show exact error for debugging
-                // error.querySelector('p').innerText = err.message;
-            }
-        }
-
-        function cleanHTML(html) {
-            let clean = html;
-            
-            // Remove style tags
-            clean = clean.replace(/<style\b[^>]*>([\s\S]*?)<\/style>/g, "");
-            
-            // Remove inline styles and classes to allow our CSS to take over
-            clean = clean.replace(/\sstyle="[^"]*"/g, "");
-            clean = clean.replace(/\sclass="[^"]*"/g, "");
-            
-            // Remove span tags but keep content (often used for formatting in GDocs)
-            clean = clean.replace(/<span[^>]*>/g, "");
-            clean = clean.replace(/<\/span>/g, "");
-            
-            // Fix Google Redirect Links (improved regex)
-            clean = clean.replace(/href="https:\/\/www\.google\.com\/url\?q=([^&"]+)[^"]*"/g, (match, url) => {
-                return 'href="' + decodeURIComponent(url) + '" target="_blank" rel="noopener noreferrer"';
-            });
-            
-            return clean;
-        }
-
-        window.addEventListener('DOMContentLoaded', loadContent);
-    </script>                               
 </body>
 </html>
