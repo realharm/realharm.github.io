@@ -292,7 +292,8 @@
     </div>
 
     <script>
-        const PUB_URL = 'https://docs.google.com/document/d/e/2PACX-1vSbKiFxQlyXUehPpU4LLSDJ4w-uUfV3UKAKfZ_uC4Hskf2Odbe27d6jhHsP7qxCVc417IvitmtWDbTc/pub';
+        // Your custom Apps Script URL
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzARNagKWGoN1q_enPZ68qaY0qkDALy6VhmRMmO3EgzUO8WFLkH9QlC2cT2mR9Zu2fC/exec';
 
         async function loadContent() {
             const loading = document.getElementById('loading');
@@ -300,13 +301,16 @@
             const docContent = document.getElementById('doc-content');
             
             try {
-                // Using corsproxy.io to bypass CORS restriction on Google Docs
-                const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(PUB_URL);
-                const response = await fetch(proxyUrl);
+                // Fetch directly from the Apps Script
+                const response = await fetch(APPS_SCRIPT_URL);
                 
                 if (!response.ok) throw new Error('Network response was not ok');
                 
                 const html = await response.text();
+                
+                // Check if the script returned an error message
+                if (html.startsWith("Error fetching doc")) throw new Error(html);
+
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, 'text/html');
                 
