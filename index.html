@@ -302,10 +302,9 @@
     </div>
 
     <script>
-        // Your custom Apps Script URL
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx0wymtByXfP7mG5kHk2zgijJ2xqOnSyobi41HQwfRadXiTRzsmG3JN80s2xV3wBrwi/exec';
+        // Your custom Apps Script URL - Updated with your latest correct link
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmVF3MGr_MBeWV6rrBgUjlhj_kbmCy9UIm1HaxSx54GqR5YXXd__9mWXP_VGBUjXIs/exec';
 
-        
         async function loadContent() {
             const loading = document.getElementById('loading');
             const error = document.getElementById('error');
@@ -320,7 +319,7 @@
                 const html = await response.text();
                 
                 // Check if the script returned an error message
-                if (html.startsWith("Error fetching doc")) throw new Error(html);
+                if (html.startsWith("Error")) throw new Error(html);
 
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, 'text/html');
@@ -342,6 +341,8 @@
                 console.error(err);
                 loading.style.display = 'none';
                 error.style.display = 'block';
+                // Optional: show exact error for debugging
+                // error.querySelector('p').innerText = err.message;
             }
         }
 
