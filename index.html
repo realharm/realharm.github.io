@@ -240,6 +240,17 @@
             align-items: center;
         }
         
+        footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+        
         .department {
             font-weight: 500;
             color: var(--text-secondary);
@@ -279,25 +290,22 @@
 
         <div id="error" class="error">
             <p>Unable to load course content.</p>
-            
-<p>Alternative syllabus link. <a href="https://docs.google.com/document/d/1xGvnjaXk77SXyVpR5fhIZsby6Ah0WcrSt3ue2ySRtRo/edit?usp=sharing</a></p>
-                                  
             <button onclick="location.reload()" style="background:none; border:none; color:inherit; text-decoration:underline; cursor:pointer; margin-top:10px;">Retry</button>
         </div>
 
         <div id="doc-content">
-            </div>
+        </div>
 
         <footer>
-            <div class="department">Department of Sociology</div>
-            <div>University of Hong Kong</div>
+            <p>Alternative syllabus link: <a href="https://docs.google.com/document/d/1xGvnjaXk77SXyVpR5fhIZsby6Ah0WcrSt3ue2ySRtRo/edit?usp=sharing" target="_blank" rel="noopener noreferrer">View on Google Docs</a></p>
         </footer>
     </div>
 
     <script>
         // Your custom Apps Script URL
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzARNagKWGoN1q_enPZ68qaY0qkDALy6VhmRMmO3EgzUO8WFLkH9QlC2cT2mR9Zu2fC/exec';
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx0wymtByXfP7mG5kHk2zgijJ2xqOnSyobi41HQwfRadXiTRzsmG3JN80s2xV3wBrwi/exec';
 
+        
         async function loadContent() {
             const loading = document.getElementById('loading');
             const error = document.getElementById('error');
@@ -351,8 +359,8 @@
             clean = clean.replace(/<span[^>]*>/g, "");
             clean = clean.replace(/<\/span>/g, "");
             
-            // Fix Google Redirect Links
-            clean = clean.replace(/href="https:\/\/www\.google\.com\/url\?q=([^&]+)&amp;[^"]*"/g, (match, url) => {
+            // Fix Google Redirect Links (improved regex)
+            clean = clean.replace(/href="https:\/\/www\.google\.com\/url\?q=([^&"]+)[^"]*"/g, (match, url) => {
                 return 'href="' + decodeURIComponent(url) + '" target="_blank" rel="noopener noreferrer"';
             });
             
